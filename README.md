@@ -1,22 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hintro Dashboard
+
+A modern dashboard for AI-powered call insights and knowledge management, built with Next.js 16, React 19, and Tailwind CSS 4.
+
+## Features
+
+- **Dashboard Overview**: View key metrics like total sessions, average duration, AI usage, and last session.
+- **Recent Calls**: Browse recent call records with sentiment analysis, tags, and summaries.
+- **Responsive Design**: Optimized for desktop and mobile devices.
+- **Demo States**: Toggle between empty and active user states for demonstration.
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **UI**: React 19, Tailwind CSS 4
+- **Icons**: Lucide React
+- **TypeScript**: Full type safety
+- **Linting**: ESLint with Next.js config
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+   ```bash
+   npm install
+   ```
+
+2. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+## Project Structure
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+app/
+  globals.css          # Global styles and Tailwind config
+  layout.tsx           # Root layout
+  page.tsx             # Main dashboard page
+components/            # Reusable UI components
+hooks/                 # Custom React hooks
+services/              # API and mock data
+types/                 # TypeScript type definitions
+utils/                 # Utility functions
+```
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
