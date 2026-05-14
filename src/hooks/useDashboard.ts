@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { DashboardData, UserState } from "@/types";
-import { fetchDashboard, setUserId } from "@/api/functions";
+import { fetchDashboardData } from "@/services/api";
 
 interface UseDashboardReturn {
   data: DashboardData | null;
@@ -26,8 +26,7 @@ export function useDashboard(
     setError(null);
 
     try {
-      setUserId(userState);
-      const response = await fetchDashboard();
+      const response = await fetchDashboardData(userState);
       if (response.success) {
         setData(response.data);
       } else {
@@ -41,8 +40,8 @@ export function useDashboard(
   }, [userState]);
 
   useEffect(() => {
-    fetchData(); // eslint-disable-line react-hooks/set-state-in-effect
-  }, [fetchData]);
+    fetchData();
+  }, [userState]);
 
   return { data, loading, error, userState, setUserState, refetch: fetchData };
 }
