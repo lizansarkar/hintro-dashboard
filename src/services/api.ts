@@ -18,7 +18,7 @@ function delay(ms: number): Promise<void> {
 }
 
 export async function fetchDashboardData(
-  state: UserState = "active"
+  state: UserState = "u1"
 ): Promise<ApiResponse<DashboardData>> {
   await delay(SIMULATED_DELAY);
 

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { DashboardData, UserState } from "@/types";
-import { fetchDashboardData } from "@/services/api";
+import { fetchDashboard, setUserId } from "@/api/functions";
 
 interface UseDashboardReturn {
   data: DashboardData | null;
@@ -14,7 +14,7 @@ interface UseDashboardReturn {
 }
 
 export function useDashboard(
-  initialState: UserState = "active"
+  initialState: UserState = "u1"
 ): UseDashboardReturn {
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -26,7 +26,8 @@ export function useDashboard(
     setError(null);
 
     try {
-      const response = await fetchDashboardData(userState);
+      setUserId(userState);
+      const response = await fetchDashboard();
       if (response.success) {
         setData(response.data);
       } else {

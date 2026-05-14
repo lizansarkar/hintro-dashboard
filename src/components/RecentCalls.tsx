@@ -47,11 +47,11 @@ function SkeletonRow() {
 export default function RecentCalls({ calls, loading }: RecentCallsProps) {
   if (loading) {
     return (
-      <div className="bg-surface-0 rounded-xl border border-surface-200 shadow-card">
-        <div className="px-5 py-4 border-b border-surface-200">
+      <div className="bg-card rounded-xl border border-border shadow-sm">
+        <div className="px-5 py-4 border-b border-border">
           <div className="skeleton w-28 h-5 rounded" />
         </div>
-        <div className="divide-y divide-surface-100">
+        <div className="divide-y divide-border">
           {Array.from({ length: 4 }).map((_, i) => (
             <SkeletonRow key={i} />
           ))}
@@ -62,11 +62,9 @@ export default function RecentCalls({ calls, loading }: RecentCallsProps) {
 
   if (calls.length === 0) {
     return (
-      <div className="bg-surface-0 rounded-xl border border-surface-200 shadow-card">
-        <div className="px-5 py-4 border-b border-surface-200">
-          <h2 className="text-base font-semibold text-ink-900">
-            Recent Calls
-          </h2>
+      <div className="bg-card rounded-xl border border-border shadow-sm">
+        <div className="px-5 py-4 border-b border-border">
+          <h2 className="text-base font-semibold text-text">Recent Calls</h2>
         </div>
         <EmptyState />
       </div>
@@ -74,15 +72,15 @@ export default function RecentCalls({ calls, loading }: RecentCallsProps) {
   }
 
   return (
-    <div className="bg-surface-0 rounded-xl border border-surface-200 shadow-card animate-fade-in">
-      <div className="flex items-center justify-between px-5 py-4 border-b border-surface-200">
-        <h2 className="text-base font-semibold text-ink-900">Recent Calls</h2>
-        <button className="text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors">
+    <div className="bg-card rounded-xl border border-border shadow-sm">
+      <div className="flex items-center justify-between px-5 py-4 border-b border-border">
+        <h2 className="text-base font-semibold text-text">Recent Calls</h2>
+        <button className="text-sm font-medium text-primary hover:text-primary/80 transition-colors">
           View all
         </button>
       </div>
 
-      <div className="divide-y divide-surface-100">
+      <div className="divide-y divide-border">
         {calls.map((call, index) => {
           const sentiment = sentimentConfig[call.sentiment];
           const SentimentIcon = sentiment.icon;
@@ -90,14 +88,14 @@ export default function RecentCalls({ calls, loading }: RecentCallsProps) {
           return (
             <div
               key={call.id}
-              className="flex items-start gap-4 p-4 sm:p-5 hover:bg-surface-50/60 transition-colors cursor-pointer group animate-slide-up"
+              className="flex items-start gap-4 p-4 sm:p-5 hover:bg-border/50 transition-colors cursor-pointer group"
               style={{
                 animationDelay: `${index * 60}ms`,
                 animationFillMode: "backwards",
               }}
             >
               {/* Avatar */}
-              <div className="w-10 h-10 rounded-full bg-brand-50 text-brand-700 flex items-center justify-center text-sm font-semibold shrink-0">
+              <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-semibold shrink-0">
                 {call.contactName
                   .split(" ")
                   .map((n) => n[0])
@@ -107,21 +105,21 @@ export default function RecentCalls({ calls, loading }: RecentCallsProps) {
               {/* Content */}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-0.5">
-                  <span className="text-sm font-semibold text-ink-900 truncate">
+                  <span className="text-sm font-semibold text-text truncate">
                     {call.contactName}
                   </span>
-                  <span className="text-xs text-ink-300 shrink-0">
+                  <span className="text-xs text-text-muted shrink-0">
                     {call.contactRole}
                   </span>
                 </div>
-                <p className="text-sm text-ink-500 line-clamp-1 mb-2">
+                <p className="text-sm text-text-muted line-clamp-1 mb-2">
                   {call.summary}
                 </p>
                 <div className="flex items-center gap-2 flex-wrap">
                   {call.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-0.5 text-[11px] font-medium bg-surface-100 text-ink-500 rounded-md"
+                      className="px-2 py-0.5 text-[11px] font-medium bg-border text-text-muted rounded-md"
                     >
                       {tag}
                     </span>
@@ -131,11 +129,11 @@ export default function RecentCalls({ calls, loading }: RecentCallsProps) {
 
               {/* Meta */}
               <div className="flex flex-col items-end gap-1.5 shrink-0">
-                <div className="flex items-center gap-1 text-xs text-ink-300">
+                <div className="flex items-center gap-1 text-xs text-text-muted">
                   <Clock size={12} />
                   <span>{formatDuration(call.duration)}</span>
                 </div>
-                <span className="text-xs text-ink-300">
+                <span className="text-xs text-text-muted">
                   {formatCallDate(call.date)}
                 </span>
                 <div

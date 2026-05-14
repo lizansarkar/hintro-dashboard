@@ -99,5 +99,5 @@ const activeUser: DashboardData = {
 };
 
 export function getMockDashboardData(state: UserState): DashboardData {
-  return state === "empty" ? emptyUser : activeUser;
+  return state === "u2" ? emptyUser : activeUser;
 }

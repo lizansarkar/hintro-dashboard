@@ -14,8 +14,8 @@ const cardConfig = [
     key: "totalSessions" as const,
     label: "Total Sessions",
     icon: Phone,
-    color: "text-brand-600",
-    bg: "bg-brand-50",
+    color: "text-primary",
+    bg: "bg-primary/10",
     format: (v: number) => v.toString(),
   },
   {
@@ -46,7 +46,7 @@ const cardConfig = [
 
 function SkeletonCard() {
   return (
-    <div className="bg-surface-0 rounded-xl border border-surface-200 p-5 shadow-card">
+    <div className="bg-card rounded-xl border border-border p-5 shadow-sm">
       <div className="flex items-start justify-between mb-4">
         <div className="skeleton w-24 h-3.5 rounded" />
         <div className="skeleton w-9 h-9 rounded-lg" />
@@ -76,13 +76,15 @@ export default function StatsCards({ stats, loading }: StatsCardsProps) {
         return (
           <div
             key={card.key}
-            className="group bg-surface-0 rounded-xl border border-surface-200 p-5
-                       shadow-card hover:shadow-cardHover hover:border-surface-300
-                       transition-all duration-200 animate-slide-up"
-            style={{ animationDelay: `${index * 80}ms`, animationFillMode: "backwards" }}
+            className="group bg-card rounded-xl border border-border p-5
+                       shadow-sm hover:shadow hover:border-border transition-all duration-200 animate-slide-up"
+            style={{
+              animationDelay: `${index * 80}ms`,
+              animationFillMode: "backwards",
+            }}
           >
             <div className="flex items-start justify-between mb-4">
-              <span className="text-sm font-medium text-ink-500">
+              <span className="text-sm font-medium text-text-muted">
                 {card.label}
               </span>
               <div
@@ -92,7 +94,7 @@ export default function StatsCards({ stats, loading }: StatsCardsProps) {
                 <Icon size={18} />
               </div>
             </div>
-            <p className="text-2xl font-bold text-ink-900 tracking-tight">
+            <p className="text-2xl font-bold text-text tracking-tight">
               {value}
             </p>
           </div>

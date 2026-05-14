@@ -56,26 +56,26 @@ export default function Sidebar({
       {/* Sidebar panel */}
       <aside
         className={`
-          fixed top-0 left-0 z-50 h-full w-[260px] bg-surface-0 border-r border-surface-200
+          fixed top-0 left-0 z-50 h-full w-[260px] bg-card border-r border-border
           flex flex-col transition-transform duration-300 ease-in-out
           lg:translate-x-0 lg:static lg:z-auto
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
         `}
       >
         {/* Logo / Brand */}
-        <div className="flex items-center justify-between h-16 px-5 border-b border-surface-200">
+        <div className="flex items-center justify-between h-16 px-5 border-b border-border">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
               <span className="text-white font-bold text-sm">H</span>
             </div>
-            <span className="text-lg font-bold text-ink-900 tracking-tight">
+            <span className="text-lg font-bold text-text tracking-tight">
               Hintro
             </span>
           </div>
 
           <button
             onClick={onClose}
-            className="lg:hidden p-1.5 rounded-lg text-ink-300 hover:text-ink-900 hover:bg-surface-100 transition-colors"
+            className="lg:hidden p-1.5 rounded-lg text-text-muted hover:text-text hover:bg-border transition-colors"
             aria-label="Close sidebar"
           >
             <X size={20} />
@@ -107,7 +107,7 @@ export default function Sidebar({
         </nav>
 
         {/* Logout */}
-        <div className="px-3 py-4 border-t border-surface-200">
+        <div className="px-3 py-4 border-t border-border">
           <button
             onClick={handleLogout}
             className="sidebar-link w-full text-danger/70 hover:text-danger hover:bg-danger/5"

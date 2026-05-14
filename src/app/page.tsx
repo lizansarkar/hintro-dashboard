@@ -13,11 +13,11 @@ export default function DashboardPage() {
   const [activeNav, setActiveNav] = useState("dashboard");
   const [feedbackOpen, setFeedbackOpen] = useState(false);
 
-  const { data, loading, userState, setUserState } = useDashboard("active");
+  const { data, loading, userState, setUserState } = useDashboard("u1");
 
-  // Toggle between empty/active for demo
+  // Toggle between u1/u2 for demo
   const toggleUserState = () => {
-    setUserState(userState === "empty" ? "active" : "empty");
+    setUserState(userState === "u1" ? "u2" : "u1");
   };
 
   // Intercept feedback nav click to open modal
