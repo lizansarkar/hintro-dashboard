@@ -50,16 +50,18 @@ export default function DashboardPage() {
         <main className="flex-1 overflow-y-auto">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8">
             {/* Greeting */}
-            <div className="animate-fade-in">
-              <h1 className="text-2xl sm:text-3xl font-bold text-ink-900 tracking-tight">
-                Hi, {data?.user.name ?? "User"}{" "}
-                <span role="img" aria-label="wave">
-                  👋
-                </span>
-              </h1>
-              <p className="mt-1 text-sm sm:text-base text-ink-500">
-                Welcome to Hintro
-              </p>
+            <div className="animate-fade-in flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+              <div>
+                <h1 className="text-2xl sm:text-3xl font-bold text-text tracking-tight">
+                  Hi, {data?.user.name ?? "User"}{" "}
+                  <span role="img" aria-label="wave" className="inline-block animate-wave origin-bottom-right">
+                    👋
+                  </span>
+                </h1>
+                <p className="mt-1.5 text-sm sm:text-base text-text-muted">
+                  Here&apos;s what&apos;s happening with your calls today.
+                </p>
+              </div>
             </div>
 
             {/* Stats */}

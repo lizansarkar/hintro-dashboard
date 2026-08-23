@@ -1,6 +1,6 @@
 "use client";
 
-import { Clock, ArrowUpRight, ArrowDownRight, Minus } from "lucide-react";
+import { Clock, ArrowUpRight, ArrowDownRight, Minus, ChevronRight } from "lucide-react";
 import { CallRecord } from "@/types";
 import { formatDuration, formatCallDate } from "@/utils/formatDuration";
 import EmptyState from "./EmptyState";
@@ -72,11 +72,13 @@ export default function RecentCalls({ calls, loading }: RecentCallsProps) {
   }
 
   return (
-    <div className="bg-card rounded-xl border border-border shadow-sm">
+    <div className="bg-card rounded-xl border border-border shadow-sm overflow-hidden">
       <div className="flex items-center justify-between px-5 py-4 border-b border-border">
         <h2 className="text-base font-semibold text-text">Recent Calls</h2>
-        <button className="text-sm font-medium text-primary hover:text-primary/80 transition-colors">
+        <button className="flex items-center gap-1 text-sm font-medium text-primary
+                           hover:gap-1.5 hover:text-primary/80 transition-all duration-200">
           View all
+          <ChevronRight size={14} />
         </button>
       </div>
 
@@ -88,14 +90,20 @@ export default function RecentCalls({ calls, loading }: RecentCallsProps) {
           return (
             <div
               key={call.id}
-              className="flex items-start gap-4 p-4 sm:p-5 hover:bg-border/50 transition-colors cursor-pointer group"
+              className="relative flex items-start gap-4 p-4 sm:p-5
+                         hover:bg-surface-50 transition-colors duration-150 cursor-pointer group
+                         animate-slide-up"
               style={{
                 animationDelay: `${index * 60}ms`,
                 animationFillMode: "backwards",
               }}
             >
               {/* Avatar */}
-              <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-semibold shrink-0">
+              <div
+                className={`w-10 h-10 rounded-full ${sentiment.bg} ${sentiment.color}
+                            flex items-center justify-center text-sm font-semibold shrink-0
+                            ring-1 ring-inset ring-black/5 select-none`}
+              >
                 {call.contactName
                   .split(" ")
                   .map((n) => n[0])
@@ -105,21 +113,22 @@ export default function RecentCalls({ calls, loading }: RecentCallsProps) {
               {/* Content */}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-0.5">
-                  <span className="text-sm font-semibold text-text truncate">
+                  <span className="text-sm font-semibold text-text truncate group-hover:text-primary transition-colors">
                     {call.contactName}
                   </span>
-                  <span className="text-xs text-text-muted shrink-0">
-                    {call.contactRole}
+                  <span className="hidden sm:inline text-xs text-ink-300 shrink-0">
+                    ·&nbsp;{call.contactRole}
                   </span>
                 </div>
                 <p className="text-sm text-text-muted line-clamp-1 mb-2">
                   {call.summary}
                 </p>
-                <div className="flex items-center gap-2 flex-wrap">
+                <div className="flex items-center gap-1.5 flex-wrap">
                   {call.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-0.5 text-[11px] font-medium bg-border text-text-muted rounded-md"
+                      className="px-2 py-0.5 text-[11px] font-medium bg-surface-100 ring-1 ring-inset ring-border
+                                 text-text-muted rounded-md"
                     >
                       {tag}
                     </span>
@@ -129,20 +138,28 @@ export default function RecentCalls({ calls, loading }: RecentCallsProps) {
 
               {/* Meta */}
               <div className="flex flex-col items-end gap-1.5 shrink-0">
-                <div className="flex items-center gap-1 text-xs text-text-muted">
+                <div className="flex items-center gap-1 text-xs font-medium text-text-muted tabular-nums">
                   <Clock size={12} />
                   <span>{formatDuration(call.duration)}</span>
                 </div>
-                <span className="text-xs text-text-muted">
+                <span className="text-xs text-ink-300">
                   {formatCallDate(call.date)}
                 </span>
                 <div
-                  className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium ${sentiment.bg} ${sentiment.color}`}
+                  className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold ${sentiment.bg} ${sentiment.color}`}
                 >
                   <SentimentIcon size={12} />
                   {sentiment.label}
                 </div>
               </div>
+
+              {/* Hover affordance */}
+              <ChevronRight
+                size={16}
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-ink-300
+                           opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0
+                           transition-all duration-200 hidden sm:block"
+              />
             </div>
           );
         })}
