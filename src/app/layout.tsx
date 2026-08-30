@@ -7,7 +7,7 @@ const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: "Hintro Dashboard",
-  description: "AI-powered call insights and knowledge management",
+  description: "AI-powered call insights and knowledge management system for your team.",
 };
 
 export default function RootLayout({
