@@ -59,7 +59,7 @@ export default function DashboardPage() {
                   </span>
                 </h1>
                 <p className="mt-1.5 text-sm sm:text-base text-text-muted">
-                  Here&apos;s what&apos;s happening with your calls today.
+                  Here&apos;s what&apos;s happening with your hintro today.
                 </p>
               </div>
             </div>
