@@ -59,7 +59,7 @@ export default function DashboardPage() {
                   </span>
                 </h1>
                 <p className="mt-1.5 text-sm sm:text-base text-text-muted">
-                  Here&apos;s what&apos;s happening with your nothing today.
+                  Welcome back! Here's a summary of your recent activity.
                 </p>
               </div>
             </div>
