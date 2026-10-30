@@ -53,7 +53,7 @@ export default function DashboardPage() {
             <div className="animate-fade-in flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
               <div>
                 <h1 className="text-2xl sm:text-3xl font-bold text-text tracking-tight">
-                  Hi, {data?.user.name ?? "User"}{" "}
+                  Hello, {data?.user.name ?? "User"}{" "}
                   <span role="img" aria-label="wave" className="inline-block animate-wave origin-bottom-right">
                     👋
                   </span>
