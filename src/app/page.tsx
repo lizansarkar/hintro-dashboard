@@ -5,11 +5,8 @@ import { useDashboard } from "@/hooks/useDashboard";
 import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
 import StatsCards from "@/components/StatsCards";
-import RecentCalls from "@/components/RecentCalls";
-import FeedbackModal from "@/components/FeedbackModal";
 
 export default function DashboardPage() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeNav, setActiveNav] = useState("dashboard");
   const [feedbackOpen, setFeedbackOpen] = useState(false);
 
