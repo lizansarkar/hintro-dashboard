@@ -55,9 +55,7 @@ export default function Navbar({
           {/* Toggle demo state */}
           <button
             onClick={onToggleState}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium
-                       border border-border bg-card text-text-muted shadow-sm
-                       hover:border-primary/40 hover:text-text transition-colors"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium hover:border-primary/40 hover:text-text transition-colors"
             title={`Switch to ${userState === "u1" ? "u2" : "u1"} state`}
           >
             {userState === "u1" ? (
